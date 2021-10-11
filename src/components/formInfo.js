@@ -12,10 +12,24 @@ class FormInfo extends React.Component {
     constructor(props) {
       super(props)
         this.state = {
-                firstName: '',
-                lastName: '',
-                email: '',
-                phoneNumber: ''
+                GeneralInfo: {
+                  firstName: {
+                    data: ''
+                  },
+                  lastName: {
+                    data: ''
+                  },
+                  email: {
+                    data: ''
+                  },
+                  phoneNumber: {
+                    data: ''
+                  }
+                },
+                EducationalInfo: {
+                  School: "Something"
+                }
+               
         }
   
       
@@ -25,15 +39,16 @@ class FormInfo extends React.Component {
         const target = event.target;
         const value = target.value;
         const name = target.name
-        console.log(event)
-        console.log(event.target)
-        console.log(event.target.value)
-        console.log(event.target.name)
-        console.log(this)
 
-        this.setState({ 
-            [name]: value 
-        })
+        this.setState(prevState => ({
+          GeneralInfo: {
+            ...prevState.GeneralInfo,
+            [name]: {
+              ...prevState.GeneralInfo[name],
+              data: value
+            }
+          }
+        }))
     }
   
 
