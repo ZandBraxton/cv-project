@@ -1,42 +1,18 @@
 import React from 'react'
 
-
-class GeneralForm extends React.Component {
-    constructor(props) {
-        super(props);
-
-        // this.state = {
-        //     firstName: '',
-        //     lastName: '',
-        //     email: '',
-        //     phoneNumber: ''
-        // }
-        
-        // this.handleInputChange = this.handleInputChange.bind(this)
-    }
-
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const value = target.value;
-    //     const name = target.name
-    //     console.log(event)
-
-    //     this.setState({
-    //         [name]: value
-    //     })
-    // }
-
-
-    render() {
+const GeneralForm = (props) => {
+    const {data} = props
+    console.log(props)
         return (
-                <form>
+               <div>
                     <label>
                         First Name
                     </label>
                     <input 
                         type='text'
                         name="firstName"
-                        onChange={this.props.handleGeneralChange}
+                        value={data.firstName.data}
+                        onChange={props.handleGeneralChange}
                     ></input>
                     <label>
                         Last Name
@@ -44,7 +20,8 @@ class GeneralForm extends React.Component {
                     <input 
                         type='text'
                         name="lastName"
-                        onChange={this.props.handleGeneralChange}
+                        value={data.lastName.data}
+                        onChange={props.handleGeneralChange}
                     ></input>
                     <label>
                         Email
@@ -52,7 +29,8 @@ class GeneralForm extends React.Component {
                     <input 
                         type='email'
                         name="email"
-                        onChange={this.props.handleGeneralChange}
+                        value={data.email.data}
+                        onChange={props.handleGeneralChange}
                     ></input>
                     <label>
                         Phone Number
@@ -60,11 +38,12 @@ class GeneralForm extends React.Component {
                     <input 
                         type='tel'
                         name="phoneNumber"
-                        onChange={this.props.handleGeneralChange}
+                        value={data.phoneNumber.data}
+                        onChange={props.handleGeneralChange}
                     ></input>
-                </form>
+                    </div>
         )
-    }
 }
+
 
 export default GeneralForm

@@ -10,7 +10,7 @@ class ExperienceInfo extends React.Component {
 
     render() {
         return (
-                <form>
+                <div>
                     <label>
                         Company Name
                     </label>
@@ -32,7 +32,7 @@ class ExperienceInfo extends React.Component {
                         End date 
                     </label>
                     <input type='date'></input>
-                </form>
+                </div>
         )
     }
 }

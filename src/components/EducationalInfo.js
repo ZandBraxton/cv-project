@@ -10,7 +10,7 @@ class EducationalInfo extends React.Component {
 
     render() {
         return (
-                <form>
+                <div>
                     <label>
                         Degrees earned
                     </label>
@@ -35,7 +35,7 @@ class EducationalInfo extends React.Component {
                         End date
                     </label>
                     <input type='date'></input>
-                </form>
+                </div>
         )
     }
 }

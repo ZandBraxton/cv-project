@@ -1,15 +1,18 @@
 import React from 'react'
 import FormInfo from './components/formInfo';
-import CvRender from './components/cvRender';
+// import CvRender from './components/cvRender';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ''
+    this.state = ''  
+  }
 
-
-    
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('You clicked submit')
+      
   }
 
   render() {
@@ -17,7 +20,7 @@ class App extends React.Component {
     return (
     <div>
       <FormInfo></FormInfo>
-      <CvRender></CvRender>
+      {/* <CvRender></CvRender> */}
     </div>
     )
   }
