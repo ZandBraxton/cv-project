@@ -1,0 +1,6 @@
+.general-form {
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+    margin: auto auto 2em auto
+}

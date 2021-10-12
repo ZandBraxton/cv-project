@@ -29,11 +29,9 @@ class FormInfo extends React.Component {
                 EducationalInfo: {
                   School: "Something"
                 },
-                CVdata: []
                
         }
   
-      
     }
 
     handleGeneralChange = (event) => {
@@ -52,12 +50,6 @@ class FormInfo extends React.Component {
         }))
     }
 
-    handleSubmit = (event) => {
-      event.preventDefault()
-      console.log(this.state.GeneralInfo)
-      console.log("You clicked submit")
-    }
-
   
 
 
@@ -65,16 +57,12 @@ class FormInfo extends React.Component {
         console.log(this.state)
       return (
       <div>
-        <form onSubmit={this.handleSubmit}>
         <GeneralForm 
           handleGeneralChange={this.handleGeneralChange.bind(this)}
           data={this.state.GeneralInfo}>
         </GeneralForm>
-        <EducationalInfo></EducationalInfo>
-        <ExperienceInfo></ExperienceInfo>
-        <input type="submit" value="Submit"></input>
-        </form>
-        <CvRender data={this.state}></CvRender>
+        {/* <EducationalInfo></EducationalInfo>
+        <ExperienceInfo></ExperienceInfo> */}
       </div>
       )
     }
