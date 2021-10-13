@@ -1,0 +1,19 @@
+.educational-container {
+    margin-left: 20em;
+}
+
+.educational-container label {
+    color: black;
+}
+
+.educational-form {
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+    margin: auto auto auto 3em;
+    padding-top: 2em;
+}
+
+.educational-form input {
+    margin: 0 0 1.5em 0;
+}

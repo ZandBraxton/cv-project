@@ -26,13 +26,14 @@ class GeneralForm extends React.Component {
     render() {
         const {data} = this.props
         return (
-            <div>
+            <div className="container">
                 {this.state.IsPreview ? (
                     <div className="form-preview">
                         <section className="full-name">
                             <h1 className="first-name">{data.firstName.data}</h1>
                             <h1 className="last-name">{data.lastName.data}</h1>
                         </section>
+                        <h2 className="info-title">Personal Info</h2>
                         <section className="personal-info">
                             <span className="info-label">Email</span>
                             <p className="info-content">{data.email.data}</p>
@@ -40,11 +41,10 @@ class GeneralForm extends React.Component {
                             <p className="info-content">{data.phoneNumber.data}</p>
                         </section>
                         <button
-                            className="submit" 
+                            className="edit" 
                             type="button" 
                             onClick={this.onSubmit}
                         >Edit</button>
-                        
                     </div>
                 ) : (
                     <form 

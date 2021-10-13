@@ -11,9 +11,3 @@ html {
     /* outline: 1px solid red; */
 }
 
-.container {
-    display: block;
-    width: 20em;
-    height: 100vh;
-    background-color: #2b2a33;
-}

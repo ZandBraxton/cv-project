@@ -62,8 +62,8 @@ class FormInfo extends React.Component {
             handleGeneralChange={this.handleGeneralChange.bind(this)}
             data={this.state.GeneralInfo}>
           </GeneralForm>
-        {/* <EducationalInfo></EducationalInfo>
-        <ExperienceInfo></ExperienceInfo> */}
+        <EducationalInfo></EducationalInfo>
+        {/* <ExperienceInfo></ExperienceInfo> */}
       </div>
       )
     }

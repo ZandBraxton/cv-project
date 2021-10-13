@@ -1,21 +1,30 @@
 
-.form-preview, label {
+
+.container {
+        display: block;
+        width: 20em;
+        height: 100vh;
+        background-color: #2b2a33;
+        position: absolute;
+}
+
+
+
+
+.form-preview, .general-form label {
     color: white;
 }
 
 .general-form {
     display: flex;
     flex-flow: column;
-    width: 50%;
+    width: 80%;
+    height: auto;
     margin: auto auto 2em auto;
 }
 
 .general-form input {
-    /* color: black; */
-}
-
-.submit {
-    color: black;
+    margin: auto 0 1.2em 0;
 }
 
 
@@ -27,8 +36,14 @@
     display: flex;
     flex-flow: row;
     gap: 0.5em;
-    margin: auto auto auto 1em;
+    margin: auto auto auto 0.6em;
     font-size: 1.4rem;
+}
+
+.info-title {
+    padding: 0.5em 0 0.5em 0.6em;
+    margin-top: 0;
+    background-color: #17171f;
 }
 
 .info-label {
@@ -40,5 +55,11 @@
 }
 
 .personal-info {
+    margin: auto auto auto 1em;
+}
+
+.edit {
+    width: 4rem;
+    font-size: 0.8rem;
     margin: auto auto auto 1em;
 }

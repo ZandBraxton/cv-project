@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     console.log(this)
     return (
-    <div className="container">
+    <div>
       <FormInfo></FormInfo>
       {/* <CvRender></CvRender> */}
     </div>
