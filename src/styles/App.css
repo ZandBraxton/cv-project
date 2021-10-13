@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    /* outline: 1px solid red; */
+}
+
+.container {
+    display: block;
+    width: 20em;
+    height: 100vh;
+    background-color: #2b2a33;
+}

@@ -8,22 +8,23 @@ import CvRender from './cvRender';
 
 
 
+
 class FormInfo extends React.Component {
     constructor(props) {
       super(props)
         this.state = {
                 GeneralInfo: {
                   firstName: {
-                    data: ''
+                    data: 'Braxton'
                   },
                   lastName: {
-                    data: ''
+                    data: 'Zand'
                   },
                   email: {
-                    data: ''
+                    data: 'Zand.Braxton@gmail.com'
                   },
                   phoneNumber: {
-                    data: ''
+                    data: '210-426-2358'
                   }
                 },
                 EducationalInfo: {
@@ -57,10 +58,10 @@ class FormInfo extends React.Component {
         console.log(this.state)
       return (
       <div>
-        <GeneralForm 
-          handleGeneralChange={this.handleGeneralChange.bind(this)}
-          data={this.state.GeneralInfo}>
-        </GeneralForm>
+          <GeneralForm 
+            handleGeneralChange={this.handleGeneralChange.bind(this)}
+            data={this.state.GeneralInfo}>
+          </GeneralForm>
         {/* <EducationalInfo></EducationalInfo>
         <ExperienceInfo></ExperienceInfo> */}
       </div>

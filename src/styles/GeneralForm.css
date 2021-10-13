@@ -1,6 +1,44 @@
+
+.form-preview, label {
+    color: white;
+}
+
 .general-form {
     display: flex;
     flex-flow: column;
     width: 50%;
-    margin: auto auto 2em auto
+    margin: auto auto 2em auto;
+}
+
+.general-form input {
+    /* color: black; */
+}
+
+.submit {
+    color: black;
+}
+
+
+
+
+/* Rendered look */
+
+.full-name {
+    display: flex;
+    flex-flow: row;
+    gap: 0.5em;
+    margin: auto auto auto 1em;
+    font-size: 1.4rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+}
+
+.info-content {
+    margin: 0.3em auto 1.5em auto;
+}
+
+.personal-info {
+    margin: auto auto auto 1em;
 }

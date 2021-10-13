@@ -5,7 +5,7 @@ class GeneralForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            IsPreview: false
+            IsPreview: true
         }
     }
 
@@ -28,12 +28,23 @@ class GeneralForm extends React.Component {
         return (
             <div>
                 {this.state.IsPreview ? (
-                    <div>
-                        <p>{data.firstName.data}</p>
-                        <p>{data.lastName.data}</p>
-                        <p>{data.email.data}</p>
-                        <p>{data.phoneNumber.data}</p>
-                        <button type="button" onClick={this.onSubmit}>Edit</button>
+                    <div className="form-preview">
+                        <section className="full-name">
+                            <h1 className="first-name">{data.firstName.data}</h1>
+                            <h1 className="last-name">{data.lastName.data}</h1>
+                        </section>
+                        <section className="personal-info">
+                            <span className="info-label">Email</span>
+                            <p className="info-content">{data.email.data}</p>
+                            <span className="info-label">Contact Number</span>
+                            <p className="info-content">{data.phoneNumber.data}</p>
+                        </section>
+                        <button
+                            className="submit" 
+                            type="button" 
+                            onClick={this.onSubmit}
+                        >Edit</button>
+                        
                     </div>
                 ) : (
                     <form 
@@ -75,7 +86,11 @@ class GeneralForm extends React.Component {
                              value={data.phoneNumber.data}
                              onChange={this.props.handleGeneralChange}
                          ></input>
-                         <input type="submit" value="Submit"></input>
+                         <input
+                         className="submit" 
+                         type="submit" 
+                         value="Submit"
+                         ></input>
                          </form>
                 )}
             </div>
