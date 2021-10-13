@@ -17,3 +17,28 @@
 .educational-form input {
     margin: 0 0 1.5em 0;
 }
+
+
+
+
+/* render */
+
+.educational-preview {
+    padding: 1em 3em;
+}
+
+.educational-preview h1 {
+    font-size: 3rem;
+}
+
+.degree {
+    opacity: 1;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.5em;
+}
+
+.educational-info p {
+   margin: 0.5em 1em;
+   opacity: 0.56;
+}

@@ -6,14 +6,14 @@ class EducationalInfo extends React.Component {
         super(props);
 
         this.state = {
-            DegreesEarned: 'Business Admin',
-            SchoolName: 'SNHU',
+            DegreesEarned: 'AA in Business Administration',
+            SchoolName: 'Southern New Hampshire University',
             City: 'Manchester',
             State: 'New Hampshire',
             GPA: '3.98',
-            StartDate: '',
-            EndDate: '',
-            IsPreview: false
+            StartDate: '2016-01-04',
+            EndDate: '2021-01-20',
+            IsPreview: true
         }
     }
 
@@ -47,14 +47,20 @@ class EducationalInfo extends React.Component {
         return (
                 <div className="educational-container">
                     {this.state.IsPreview ? (
-                        <div>
-                        <p>{this.state.DegreesEarned}</p>
-                        <p>{this.state.SchoolName}</p>
-                        <button
-                            className="edit" 
-                            type="button" 
-                            onClick={this.onSubmit}
-                        >Edit</button>
+                        <div className="educational-preview">
+                            <h1>Education</h1>
+                            <p className="degree">{this.state.DegreesEarned}</p>
+                            <div className="educational-info">
+                                <p>{this.state.SchoolName}</p>
+                                <p>{this.state.City}, {this.state.State}</p>
+                                <p>GPA: {this.state.GPA}</p>
+                                <p>{this.state.StartDate} - {this.state.EndDate}</p>
+                            </div>
+                            <button
+                                className="edit" 
+                                type="button" 
+                                onClick={this.onSubmit}
+                            >Edit</button>
                         </div>
                     ) : (
                         <form

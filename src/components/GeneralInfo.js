@@ -29,10 +29,7 @@ class GeneralForm extends React.Component {
             <div className="container">
                 {this.state.IsPreview ? (
                     <div className="form-preview">
-                        <section className="full-name">
-                            <h1 className="first-name">{data.firstName.data}</h1>
-                            <h1 className="last-name">{data.lastName.data}</h1>
-                        </section>
+                        <h1 className="full-name">{data.firstName.data} {data.lastName.data}</h1>
                         <h2 className="info-title">Personal Info</h2>
                         <section className="personal-info">
                             <span className="info-label">Email</span>
