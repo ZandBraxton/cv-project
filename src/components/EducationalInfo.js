@@ -6,7 +6,7 @@ class EducationalInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            EducationChildren: 1
+            EducationChildren: 0
         }
 
       
@@ -31,9 +31,10 @@ class EducationalInfo extends React.Component {
                     <h1>Education</h1>
                     {education}
                     <button
+                    className="add-education"
                     type="button"
                     onClick={this.handleAddEducation}
-                    >Add Stuff</button> 
+                    >Add Education</button> 
                 </div>
         )
     }

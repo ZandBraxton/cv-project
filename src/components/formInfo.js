@@ -58,7 +58,7 @@ class FormInfo extends React.Component {
             data={this.state.GeneralInfo}>
           </GeneralForm>
         <EducationalInfo></EducationalInfo>
-        {/* <ExperienceInfo></ExperienceInfo> */}
+        <ExperienceInfo></ExperienceInfo>
       </div>
       )
     }

@@ -1,37 +1,40 @@
 import React from 'react'
-
+import ExperienceInput from './ExperienceInput';
+import '../styles/ExperienceForm.css'
 
 class ExperienceInfo extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            ExperienceChildren: 0
+        }
 
-        this.state = ''
+      
+    }
+
+    handleAddexperience = (event) => {
+        event.preventDefault()
+        this.setState({
+            ExperienceChildren: this.state.ExperienceChildren + 1
+        })
+
     }
 
     render() {
+        const experience = []
+        for(let i = 0; i < this.state.ExperienceChildren; i++) {
+            experience.push(<ExperienceInput></ExperienceInput>)
+          }
+
         return (
-                <div>
-                    <label>
-                        Company Name
-                    </label>
-                    <input type='text'></input>
-                    <label>
-                        Position Title
-                    </label>
-                    <input type='text'></input>
-                    <label>
-                        Job Tasks
-                    </label>
-                    <input type='text'></input>
-                    <label>
-                        Starting date
-                    </label>
-                    <input type='date'></input>
-                    <label>
-                        {/* if applicable */}
-                        End date 
-                    </label>
-                    <input type='date'></input>
+                <div className="experience-container">
+                    <h1>Experience</h1>
+                    {experience}
+                    <button
+                    className="add-experience"
+                    type="button"
+                    onClick={this.handleAddexperience}
+                    >Add experience</button> 
                 </div>
         )
     }

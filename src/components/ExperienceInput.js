@@ -1,16 +1,15 @@
 import React from 'react'
-import '../styles/EducationalForm.css'
+import '../styles/ExperienceForm.css'
 
-class EducationalInput extends React.Component {
+class ExperienceInput extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            DegreesEarned: 'AA in Business Adminsistration',
-            SchoolName: 'Southern New Hampshire University',
-            City: 'New Hampshire',
-            State: 'Manchester',
-            GPA: '3.98',
+            PositionTitle: "Cashier",
+            CompanyName: 'European Car Parts',
+            City: 'San Antonio',
+            State: 'Texas',
             StartDate: '2021-01-16',
             EndDate: '2021-04-22',
             IsPreview: false
@@ -44,60 +43,57 @@ class EducationalInput extends React.Component {
 
 
     render() {
-        console.log(this.props)
-        console.log(this.state.DegreesEarned)
         return (
-                <div className="educational-input-container">
+                <div className="experience-input-container">
                     {this.state.IsPreview ? (
-                        <div className="educational-preview">
-                            <p className="degree">{this.state.DegreesEarned}</p>
-                            <div className="educational-info">
-                                <p>{this.state.SchoolName}, {this.state.City}, {this.state.State}</p>
-                                <p>GPA: {this.state.GPA}</p>
+                        <div className="experience-preview">
+                            <p className="position-title">{this.state.PositionTitle}</p>
+                            <div className="experience-info">
+                                <p>{this.state.CompanyName}, {this.state.City}, {this.state.State}</p>
                                 <p>{this.state.StartDate} - {this.state.EndDate}</p>
                             </div>
                             <button
-                                className="education-edit" 
+                                className="experience-edit" 
                                 type="button" 
                                 onClick={this.onSubmit}
                             >Edit</button>
                             <button
-                                className="education-edit" 
+                                className="experience-edit" 
                                 type="button" 
                             >Delete</button>
                         </div>
                     ) : (
                         <form
-                        className="educational-form"
+                        className="experience-form"
                         onSubmit={this.onSubmit}
                         >
-                            <div className="educational-input-group">
+                            <div className="experience-input-group">
                                 <label>
-                                    Degree
+                                    Position Title
                                 </label>
                                 <input 
                                 type='text'
-                                name="DegreesEarned"
-                                placeholder="Degree"
-                                value={this.state.DegreesEarned}
+                                name="PositionTitle"
+                                placeholder="Position Title"
+                                value={this.state.PositionTitle}
                                 onChange={this.handleGeneralChange}
                                 required
                                 ></input>
                             </div>
 
-                            <div className="educational-input-group">
+                            <div className="experience-input-group">
                                 <label>
-                                    School Name
+                                    Company Name
                                 </label>
                                 <input
                                 type='text'
-                                name="SchoolName"
-                                placeholder="School Name"
-                                value={this.state.SchoolName}
+                                name="CompanyName"
+                                placeholder="Company Name"
+                                value={this.state.CompanyName}
                                 onChange={this.handleGeneralChange}
                                 required></input>
                             </div>
-                          <div className="educational-input-group">
+                          <div className="experience-input-group">
                             <label>
                                 City and State of institution
                             </label>
@@ -120,20 +116,7 @@ class EducationalInput extends React.Component {
                                 ></input>
                                 </div>
                           </div>
-                            <div className="educational-input-group">
-                                <label>
-                                    GPA
-                                </label>
-                                <input
-                                type='number'
-                                name="GPA"
-                                placeholder="GPA"
-                                value={this.state.GPA}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                            </div>
-                            <div className="educational-input-group">
+                            <div className="experience-input-group">
                                 <label>
                                     Starting date
                                 </label>
@@ -145,7 +128,7 @@ class EducationalInput extends React.Component {
                                 required
                                 ></input>
                             </div>
-                            <div className="educational-input-group">
+                            <div className="experience-input-group">
                                 <label>
                                     End date
                                 </label>
@@ -158,7 +141,7 @@ class EducationalInput extends React.Component {
                                 ></input>
                             </div>
                             <button
-                            className="education-submit"
+                            className="experience-submit"
                             >Submit</button>
                         </form>
                     )} 
@@ -169,4 +152,4 @@ class EducationalInput extends React.Component {
 
 
 
-export default EducationalInput
+export default ExperienceInput
