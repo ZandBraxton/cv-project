@@ -6,7 +6,7 @@ class EducationalInput extends React.Component {
         super(props);
 
         this.state = {
-            DegreesEarned: 'Degree',
+            DegreesEarned: 'AA in Business Administration',
             SchoolName: 'Southern New Hampshire University',
             City: 'Manchester',
             State: 'New Hampshire',
@@ -47,7 +47,7 @@ class EducationalInput extends React.Component {
         console.log(this.props)
         console.log(this.state.DegreesEarned)
         return (
-                <div className="educational-container">
+                <div className="educational-input-container">
                     {this.state.IsPreview ? (
                         <div className="educational-preview">
                             <p className="degree">{this.state.DegreesEarned}</p>
@@ -68,61 +68,78 @@ class EducationalInput extends React.Component {
                         className="educational-form"
                         onSubmit={this.onSubmit}
                         >
-                            <label>
-                                Degrees earned
-                            </label>
-                            <input 
-                            type='text'
-                            name="DegreesEarned"
-                            value={this.state.DegreesEarned}
-                            onChange={this.handleGeneralChange}
-                            ></input>
-                            <label>
-                                School Name
-                            </label>
-                            <input
-                            type='text'
-                            name="SchoolName"
-                            value={this.state.SchoolName}
-                            onChange={this.handleGeneralChange}></input>
+                            <div className="educational-input-group">
+                                <label>
+                                    Degrees earned
+                                </label>
+                                <input 
+                                type='text'
+                                name="DegreesEarned"
+                                value={this.state.DegreesEarned}
+                                onChange={this.handleGeneralChange}
+                                ></input>
+                            </div>
+
+                            <div className="educational-input-group">
+                                <label>
+                                    School Name
+                                </label>
+                                <input
+                                type='text'
+                                name="SchoolName"
+                                value={this.state.SchoolName}
+                                onChange={this.handleGeneralChange}></input>
+                            </div>
+                          <div className="educational-input-group">
                             <label>
                                 City and State of institution
                             </label>
-                            <input
-                            type='text'
-                            name="City"
-                            value={this.state.City}
-                            onChange={this.handleGeneralChange}></input>
-                            <input
-                            type='text'
-                            name="State"
-                            value={this.state.State}
-                            onChange={this.handleGeneralChange}></input>
-                            <label>
-                                GPA
-                            </label>
-                            <input
-                            type='number'
-                            name="GPA"
-                            value={this.state.GPA}
-                            onChange={this.handleGeneralChange}></input>
-                            <label>
-                                Starting date
-                            </label>
-                            <input
-                            type='date'
-                            name="StartDate"
-                            value={this.state.StartDate}
-                            onChange={this.handleGeneralChange}></input>
-                            <label>
-                                End date
-                            </label>
-                            <input
-                            type='date'
-                            name="EndDate"
-                            value={this.state.EndDate}
-                            onChange={this.handleGeneralChange}></input>
-                            <input type="submit" value="Submit"></input>
+                                <div className="city-state">
+                                <input
+                                type='text'
+                                name="City"
+                                value={this.state.City}
+                                onChange={this.handleGeneralChange}></input>
+                                <input
+                                type='text'
+                                name="State"
+                                value={this.state.State}
+                                onChange={this.handleGeneralChange}></input>
+                                </div>
+                          </div>
+                            <div className="educational-input-group">
+                                <label>
+                                    GPA
+                                </label>
+                                <input
+                                type='number'
+                                name="GPA"
+                                value={this.state.GPA}
+                                onChange={this.handleGeneralChange}></input>
+                            </div>
+                            <div className="educational-input-group">
+                                <label>
+                                    Starting date
+                                </label>
+                                <input
+                                type='date'
+                                name="StartDate"
+                                value={this.state.StartDate}
+                                onChange={this.handleGeneralChange}></input>
+                            </div>
+                            <div className="educational-input-group">
+                                <label>
+                                    End date
+                                </label>
+                                <input
+                                type='date'
+                                name="EndDate"
+                                value={this.state.EndDate}
+                                onChange={this.handleGeneralChange}></input>
+                            </div>
+                            <button
+                            className="education-submit"
+                            >Submit</button>
                         </form>
                     )} 
                 </div>
