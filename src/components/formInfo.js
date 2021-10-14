@@ -27,9 +27,7 @@ class FormInfo extends React.Component {
                     data: '210-426-2358'
                   }
                 },
-                EducationalInfo: {
-                  School: "Something"
-                },
+                
                
         }
   
@@ -51,11 +49,8 @@ class FormInfo extends React.Component {
         }))
     }
 
-  
-
 
     render() {
-        console.log(this.state)
       return (
       <div>
           <GeneralForm 
