@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/ExperienceForm.css'
+import '../styles/EduExp.css'
 
 class ExperienceInput extends React.Component {
     constructor(props) {
@@ -44,30 +44,32 @@ class ExperienceInput extends React.Component {
 
     render() {
         return (
-                <div className="experience-input-container">
+                <div className="edu-exp-input-container">
                     {this.state.IsPreview ? (
-                        <div className="experience-preview">
+                        <div className="edu-exp-preview">
                             <p className="position-title">{this.state.PositionTitle}</p>
-                            <div className="experience-info">
+                            <div className="edu-exp-info">
                                 <p>{this.state.CompanyName}, {this.state.City}, {this.state.State}</p>
                                 <p>{this.state.StartDate} - {this.state.EndDate}</p>
                             </div>
                             <button
-                                className="experience-edit" 
+                                className="edu-exp-edit" 
                                 type="button" 
                                 onClick={this.onSubmit}
                             >Edit</button>
                             <button
-                                className="experience-edit" 
+                                className="edu-exp-edit"
+                                value={this._reactInternals.key}
+                                onClick={this.props.handleDelete} 
                                 type="button" 
                             >Delete</button>
                         </div>
                     ) : (
                         <form
-                        className="experience-form"
+                        className="edu-exp-form"
                         onSubmit={this.onSubmit}
                         >
-                            <div className="experience-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     Position Title
                                 </label>
@@ -81,7 +83,7 @@ class ExperienceInput extends React.Component {
                                 ></input>
                             </div>
 
-                            <div className="experience-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     Company Name
                                 </label>
@@ -93,7 +95,7 @@ class ExperienceInput extends React.Component {
                                 onChange={this.handleGeneralChange}
                                 required></input>
                             </div>
-                          <div className="experience-input-group">
+                          <div className="edu-exp-input-group">
                             <label>
                                 City and State of institution
                             </label>
@@ -116,7 +118,7 @@ class ExperienceInput extends React.Component {
                                 ></input>
                                 </div>
                           </div>
-                            <div className="experience-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     Starting date
                                 </label>
@@ -128,7 +130,7 @@ class ExperienceInput extends React.Component {
                                 required
                                 ></input>
                             </div>
-                            <div className="experience-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     End date
                                 </label>
@@ -141,7 +143,7 @@ class ExperienceInput extends React.Component {
                                 ></input>
                             </div>
                             <button
-                            className="experience-submit"
+                            className="edu-exp-submit"
                             >Submit</button>
                         </form>
                     )} 

@@ -26,7 +26,7 @@ class GeneralForm extends React.Component {
     render() {
         const {data} = this.props
         return (
-            <div className="container">
+            <div className="general-container">
                 {this.state.IsPreview ? (
                     <div className="form-preview">
                         <h1 className="full-name">{data.firstName.data} {data.lastName.data}</h1>

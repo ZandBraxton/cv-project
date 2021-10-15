@@ -1,12 +1,14 @@
 import React from 'react'
 import ExperienceInput from './ExperienceInput';
-import '../styles/ExperienceForm.css'
+import uniqid from 'uniqid'
+import '../styles/EduExp.css'
+
 
 class ExperienceInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ExperienceChildren: 0
+            ExperienceArray: []
         }
 
       
@@ -15,26 +17,37 @@ class ExperienceInfo extends React.Component {
     handleAddexperience = (event) => {
         event.preventDefault()
         this.setState({
-            ExperienceChildren: this.state.ExperienceChildren + 1
+            ExperienceArray: this.state.ExperienceArray.concat(
+                <ExperienceInput
+                key={uniqid()}
+                handleDelete={this.handleDelete.bind(this)}
+                ></ExperienceInput>)
         })
+    }
 
+    handleDelete = (event) => {
+        const key = event.target.value
+        console.log(event.target.value)
+
+        this.setState({
+            ExperienceArray: this.state.ExperienceArray.filter((obj) => obj.key !== key) 
+        })
     }
 
     render() {
-        const experience = []
-        for(let i = 0; i < this.state.ExperienceChildren; i++) {
-            experience.push(<ExperienceInput></ExperienceInput>)
-          }
+      
 
         return (
-                <div className="experience-container">
+                <div className="edu-exp-container">
+                    <div className="title">
                     <h1>Experience</h1>
-                    {experience}
-                    <button
-                    className="add-experience"
-                    type="button"
-                    onClick={this.handleAddexperience}
-                    >Add experience</button> 
+                        <button
+                        className="add-edu-exp material-icons"
+                        type="button"
+                        onClick={this.handleAddexperience}
+                        >add_circle</button> 
+                    </div>
+                    {this.state.ExperienceArray}
                 </div>
         )
     }

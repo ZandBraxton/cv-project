@@ -1,12 +1,13 @@
 import React from 'react'
 import EducationalInput from './EducationalInput';
-import '../styles/EducationalForm.css'
+import uniqid from 'uniqid'
+import '../styles/EduExp.css'
 
 class EducationalInfo extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            EducationChildren: 0
+            EducationArray: []
         }
 
       
@@ -15,26 +16,37 @@ class EducationalInfo extends React.Component {
     handleAddEducation = (event) => {
         event.preventDefault()
         this.setState({
-            EducationChildren: this.state.EducationChildren + 1
+            EducationArray: this.state.EducationArray.concat(
+            <EducationalInput 
+            key={uniqid()} 
+            handleDelete={this.handleDelete.bind(this)}
+            ></EducationalInput>)
         })
-
     }
 
-    render() {
-        const education = []
-        for(let i = 0; i < this.state.EducationChildren; i++) {
-            education.push(<EducationalInput></EducationalInput>)
-          }
+    handleDelete = (event) => {
+        const key = event.target.value
+        console.log(event.target.value)
 
+        this.setState({
+            EducationArray: this.state.EducationArray.filter((obj) => obj.key !== key) 
+        })
+    }
+
+    
+
+    render() {
         return (
-                <div className="educational-container">
-                    <h1>Education</h1>
-                    {education}
-                    <button
-                    className="add-education"
-                    type="button"
-                    onClick={this.handleAddEducation}
-                    >Add Education</button> 
+                <div className="edu-exp-container">
+                    <div className="title">
+                        <h1>Education</h1>
+                        <button
+                        className="add-edu-exp material-icons"
+                        type="button"
+                        onClick={this.handleAddEducation}
+                        >add_circle</button>     
+                    </div>
+                    {this.state.EducationArray}
                 </div>
         )
     }

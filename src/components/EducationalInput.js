@@ -1,12 +1,13 @@
 import React from 'react'
-import '../styles/EducationalForm.css'
+// import uniqid from 'uniqid'
+import '../styles/EduExp.css'
 
 class EducationalInput extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            DegreesEarned: 'AA in Business Adminsistration',
+            DegreesEarned: '',
             SchoolName: 'Southern New Hampshire University',
             City: 'New Hampshire',
             State: 'Manchester',
@@ -42,36 +43,41 @@ class EducationalInput extends React.Component {
     console.log(this.state)
 }
 
+   
+
 
     render() {
         console.log(this.props)
-        console.log(this.state.DegreesEarned)
+        console.log(this.state)
+        console.log(this._reactInternals.key)
         return (
-                <div className="educational-input-container">
+                <div className="edu-exp-input-container">
                     {this.state.IsPreview ? (
-                        <div className="educational-preview">
+                        <div className="edu-exp-preview">
                             <p className="degree">{this.state.DegreesEarned}</p>
-                            <div className="educational-info">
+                            <div className="edu-exp-info">
                                 <p>{this.state.SchoolName}, {this.state.City}, {this.state.State}</p>
                                 <p>GPA: {this.state.GPA}</p>
                                 <p>{this.state.StartDate} - {this.state.EndDate}</p>
                             </div>
                             <button
-                                className="education-edit" 
+                                className="edu-exp-edit" 
                                 type="button" 
                                 onClick={this.onSubmit}
                             >Edit</button>
                             <button
-                                className="education-edit" 
-                                type="button" 
+                                className="edu-exp-edit" 
+                                type="button"
+                                value={this._reactInternals.key}
+                                onClick={this.props.handleDelete} 
                             >Delete</button>
                         </div>
                     ) : (
                         <form
-                        className="educational-form"
+                        className="edu-exp-form"
                         onSubmit={this.onSubmit}
                         >
-                            <div className="educational-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     Degree
                                 </label>
@@ -85,7 +91,7 @@ class EducationalInput extends React.Component {
                                 ></input>
                             </div>
 
-                            <div className="educational-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     School Name
                                 </label>
@@ -97,7 +103,7 @@ class EducationalInput extends React.Component {
                                 onChange={this.handleGeneralChange}
                                 required></input>
                             </div>
-                          <div className="educational-input-group">
+                          <div className="edu-exp-input-group">
                             <label>
                                 City and State of institution
                             </label>
@@ -120,7 +126,7 @@ class EducationalInput extends React.Component {
                                 ></input>
                                 </div>
                           </div>
-                            <div className="educational-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     GPA
                                 </label>
@@ -133,7 +139,7 @@ class EducationalInput extends React.Component {
                                 required
                                 ></input>
                             </div>
-                            <div className="educational-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     Starting date
                                 </label>
@@ -145,7 +151,7 @@ class EducationalInput extends React.Component {
                                 required
                                 ></input>
                             </div>
-                            <div className="educational-input-group">
+                            <div className="edu-exp-input-group">
                                 <label>
                                     End date
                                 </label>
@@ -158,7 +164,7 @@ class EducationalInput extends React.Component {
                                 ></input>
                             </div>
                             <button
-                            className="education-submit"
+                            className="edu-exp-submit"
                             >Submit</button>
                         </form>
                     )} 

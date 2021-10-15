@@ -12,3 +12,9 @@ html {
     /* outline: 1px solid red; */
 }
 
+.title {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    
+}

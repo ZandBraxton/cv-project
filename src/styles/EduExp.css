@@ -1,25 +1,26 @@
-.educational-container {
+.edu-exp-container {
     margin-left: 20em;
 }
 
-.educational-container h1 {
+.edu-exp-container h1 {
+    width: 7em;
     font-size: 2.5rem;
     margin: 0;
-    padding: 0.5em 1em 0 1em;
+    padding: 0.5em 1em 0.5em 1em;
 }
 
-.educational-container label {
+.edu-exp-container label {
     color: black;
 }
 
 
 
-.educational-input-container {
+.edu-exp-input-container {
     margin: 0 0 0 2.8em;
 }
 
 
-.educational-form {
+.edu-exp-form {
     display: grid;
     width: auto;
     grid-template-columns: 20em 20em 20em;
@@ -29,12 +30,12 @@
 
 
 
-.educational-input-group {
+.edu-exp-input-group {
     display: flex;
     flex-flow: column;
 }
 
-.educational-form input {
+.edu-exp-form input {
     font-size: 1rem;
     height: auto;
     width: 100%;
@@ -48,7 +49,7 @@
     margin: 1em 0;
 }
 
-.education-submit {
+.edu-exp-submit {
     width: 50%;
     margin: 0 auto 4em auto;
     grid-column: 1/4;
@@ -59,8 +60,15 @@
 
 /* render */
 
-.educational-preview {
-    padding: 1em 0em;
+.edu-exp-preview {
+    padding: 0em 0em;
+}
+
+.position-title {
+    opacity: 1;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 0.5em;
 }
 
 
@@ -72,12 +80,12 @@
     margin-bottom: 0.5em;
 }
 
-.educational-info p {
+.edu-exp-info p {
    margin: 0.5em 1em;
    opacity: 0.56;
 }
 
-.education-edit {
+.edu-exp-edit {
     width: 4rem;
     font-size: 0.8rem;
     margin: auto auto auto 1em;
@@ -86,9 +94,12 @@
 
 
 
-.add-education {
+.add-edu-exp {
     font-size: 1.4rem;
-    margin-top: 2em;
-    margin-left: 2em;
-    margin-bottom: 1.5em;
+    margin-left: 1em;
+    color: rgb(29, 185, 29);
+}
+
+.add-edu-exp:hover {
+    cursor: pointer;
 }
