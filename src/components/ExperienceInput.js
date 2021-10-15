@@ -12,6 +12,8 @@ class ExperienceInput extends React.Component {
             State: 'Texas',
             StartDate: '2021-01-16',
             EndDate: '2021-04-22',
+            Tasks: 'I did this and that and this and thatI did this and that and this and thatI did this and that and this and thatI did this and that and this and thatI did this and that and this and that',
+            IsPresent: false,
             IsPreview: false
         }
     }
@@ -20,7 +22,6 @@ class ExperienceInput extends React.Component {
         const target = event.target;
         const value = target.value;
         const name = target.name
-
         this.setState({
             [name]: value
         })
@@ -28,7 +29,6 @@ class ExperienceInput extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.IsPreview)
         if(this.state.IsPreview === true) {
             this.setState({
                 IsPreview: false
@@ -38,8 +38,18 @@ class ExperienceInput extends React.Component {
                 IsPreview: true
         })
     }
-    console.log(this.state)
 }
+    handlePresent = (e) => {
+        if(this.state.IsPresent === true) {
+            this.setState({
+                IsPresent: false
+            })
+        } else {
+            this.setState({
+                IsPresent: true
+        })
+    }
+    }
 
 
     render() {
@@ -50,8 +60,9 @@ class ExperienceInput extends React.Component {
                             <p className="position-title">{this.state.PositionTitle}</p>
                             <div className="edu-exp-info">
                                 <p>{this.state.CompanyName}, {this.state.City}, {this.state.State}</p>
-                                <p>{this.state.StartDate} - {this.state.EndDate}</p>
+                                <p>{this.state.StartDate} - {this.state.IsPresent ? "Present" : this.state.EndDate}</p>
                             </div>
+                            <p className="tasks">Responsibilities: {this.state.Tasks}</p>
                             <button
                                 className="edu-exp-edit" 
                                 type="button" 
@@ -139,8 +150,23 @@ class ExperienceInput extends React.Component {
                                 name="EndDate"
                                 value={this.state.EndDate}
                                 onChange={this.handleGeneralChange}
+                                disabled={this.state.IsPresent}
                                 required
                                 ></input>
+                                <div className="checkbox">
+                                <label>To Present?</label>
+                                <input
+                                type="checkbox"
+                                onClick={this.handlePresent}></input>
+                                </div>
+                            </div>
+                            <div>
+                                <label>Tasks</label>
+                                <textarea
+                                name="Tasks"
+                                value={this.state.Tasks}
+                                onChange={this.handleGeneralChange}>
+                                </textarea>
                             </div>
                             <button
                             className="edu-exp-submit"

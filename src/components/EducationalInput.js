@@ -8,12 +8,13 @@ class EducationalInput extends React.Component {
 
         this.state = {
             DegreesEarned: '',
-            SchoolName: 'Southern New Hampshire University',
-            City: 'New Hampshire',
-            State: 'Manchester',
-            GPA: '3.98',
-            StartDate: '2021-01-16',
-            EndDate: '2021-04-22',
+            SchoolName: '',
+            City: '',
+            State: '',
+            GPA: '',
+            StartDate: '',
+            EndDate: '',
+            IsPresent: false,
             IsPreview: false
         }
     }
@@ -22,7 +23,6 @@ class EducationalInput extends React.Component {
         const target = event.target;
         const value = target.value;
         const name = target.name
-
         this.setState({
             [name]: value
         })
@@ -30,7 +30,6 @@ class EducationalInput extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.IsPreview)
         if(this.state.IsPreview === true) {
             this.setState({
                 IsPreview: false
@@ -40,16 +39,24 @@ class EducationalInput extends React.Component {
                 IsPreview: true
         })
     }
-    console.log(this.state)
+}
+
+handlePresent = (e) => {
+    if(this.state.IsPresent === true) {
+        this.setState({
+            IsPresent: false
+        })
+    } else {
+        this.setState({
+            IsPresent: true
+    })
+}
 }
 
    
 
 
     render() {
-        console.log(this.props)
-        console.log(this.state)
-        console.log(this._reactInternals.key)
         return (
                 <div className="edu-exp-input-container">
                     {this.state.IsPreview ? (
@@ -58,7 +65,7 @@ class EducationalInput extends React.Component {
                             <div className="edu-exp-info">
                                 <p>{this.state.SchoolName}, {this.state.City}, {this.state.State}</p>
                                 <p>GPA: {this.state.GPA}</p>
-                                <p>{this.state.StartDate} - {this.state.EndDate}</p>
+                                <p>{this.state.StartDate} - {this.state.IsPresent ? "Present" : this.state.EndDate}</p>
                             </div>
                             <button
                                 className="edu-exp-edit" 
@@ -160,8 +167,15 @@ class EducationalInput extends React.Component {
                                 name="EndDate"
                                 value={this.state.EndDate}
                                 onChange={this.handleGeneralChange}
+                                disabled={this.state.IsPresent}
                                 required
                                 ></input>
+                                <div className="checkbox">
+                                    <label>To Present?</label>
+                                    <input
+                                    type="checkbox"
+                                    onClick={this.handlePresent}></input>
+                                </div>
                             </div>
                             <button
                             className="edu-exp-submit"

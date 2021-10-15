@@ -27,8 +27,6 @@ class ExperienceInfo extends React.Component {
 
     handleDelete = (event) => {
         const key = event.target.value
-        console.log(event.target.value)
-
         this.setState({
             ExperienceArray: this.state.ExperienceArray.filter((obj) => obj.key !== key) 
         })

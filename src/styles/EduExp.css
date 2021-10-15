@@ -35,13 +35,17 @@
     flex-flow: column;
 }
 
-.edu-exp-form input {
+.edu-exp-form input, textarea {
     font-size: 1rem;
     height: auto;
     width: 100%;
     margin: 1em 0 1em 0;
 }
 
+.edu-exp-form textarea {
+    font-size: 0.8rem;
+    height: 10em;
+}
 .city-state input{
     height: auto;
     display: flex;
@@ -55,14 +59,20 @@
     grid-column: 1/4;
 }
 
+.checkbox label {
+    margin-left: 0.3em;
+}
+
+.checkbox input {
+    width: 1em;
+    margin-left: 1em;
+}
 
 
 
 /* render */
 
-.edu-exp-preview {
-    padding: 0em 0em;
-}
+
 
 .position-title {
     opacity: 1;
@@ -71,13 +81,17 @@
     margin-bottom: 0.5em;
 }
 
-
-
 .degree {
     opacity: 1;
     font-size: 1.4rem;
     font-weight: 800;
     margin-bottom: 0.5em;
+}
+
+.tasks {
+    margin: 0.5em 1em 1em 1em;
+    width: 40%;
+    word-break: normal;
 }
 
 .edu-exp-info p {
@@ -88,10 +102,8 @@
 .edu-exp-edit {
     width: 4rem;
     font-size: 0.8rem;
-    margin: auto auto auto 1em;
+    margin: auto auto 2em 1em;
 }
-
-
 
 
 .add-edu-exp {

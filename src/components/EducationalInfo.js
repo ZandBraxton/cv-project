@@ -26,8 +26,6 @@ class EducationalInfo extends React.Component {
 
     handleDelete = (event) => {
         const key = event.target.value
-        console.log(event.target.value)
-
         this.setState({
             EducationArray: this.state.EducationArray.filter((obj) => obj.key !== key) 
         })
