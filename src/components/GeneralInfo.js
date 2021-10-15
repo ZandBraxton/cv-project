@@ -5,13 +5,12 @@ class GeneralForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            IsPreview: true
+            IsPreview: false
         }
     }
 
     onSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.IsPreview)
         if(this.state.IsPreview === true) {
             this.setState({
                 IsPreview: false

@@ -6,13 +6,13 @@ class ExperienceInput extends React.Component {
         super(props);
 
         this.state = {
-            PositionTitle: "Cashier",
-            CompanyName: 'European Car Parts',
-            City: 'San Antonio',
-            State: 'Texas',
-            StartDate: '2021-01-16',
-            EndDate: '2021-04-22',
-            Tasks: 'I did this and that and this and thatI did this and that and this and thatI did this and that and this and thatI did this and that and this and thatI did this and that and this and that',
+            PositionTitle: '',
+            CompanyName: '',
+            City: '',
+            State: '',
+            StartDate: '',
+            EndDate: '',
+            Tasks: '',
             IsPresent: false,
             IsPreview: false
         }

@@ -10,18 +10,12 @@ class App extends React.Component {
     this.state = ''  
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('You clicked submit')
-      
-  }
+
 
   render() {
-    console.log(this)
     return (
     <div>
       <FormInfo></FormInfo>
-      {/* <CvRender></CvRender> */}
     </div>
     )
   }

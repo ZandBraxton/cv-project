@@ -2,7 +2,6 @@ import React from 'react'
 import GeneralForm from './GeneralInfo';    
 import EducationalInfo from './EducationalInfo';
 import ExperienceInfo from './ExperienceInfo';
-import CvRender from './cvRender';
 
 
 
@@ -15,16 +14,16 @@ class FormInfo extends React.Component {
         this.state = {
                 GeneralInfo: {
                   firstName: {
-                    data: 'Braxton'
+                    data: ''
                   },
                   lastName: {
-                    data: 'Zand'
+                    data: ''
                   },
                   email: {
-                    data: 'Zand.Braxton@gmail.com'
+                    data: ''
                   },
                   phoneNumber: {
-                    data: '210-426-2358'
+                    data: ''
                   }
                 },
                 
