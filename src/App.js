@@ -1,25 +1,16 @@
 import React from 'react'
-import FormInfo from './components/formInfo';
+import GeneralForm from './components/GeneralInfo';
+import EducationalInfo from './components/EducationalInfo';
+import ExperienceInfo from './components/ExperienceInfo';
 import './styles/App.css'
-// import CvRender from './components/cvRender';
 
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = ''  
-  }
-
-
-
-  render() {
-    return (
-    <div>
-      <FormInfo></FormInfo>
-    </div>
-    )
-  }
- 
+export default function App() {
+  return (
+  <div>
+    <GeneralForm></GeneralForm>
+    <EducationalInfo></EducationalInfo>
+    <ExperienceInfo></ExperienceInfo>
+  </div>
+  ) 
 }
-
-export default App;
