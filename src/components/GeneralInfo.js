@@ -6,15 +6,14 @@ export default function Generalform() {
         firstName: "Braxton",
         lastName: "Zand",
         email: "Zand.Braxton@gmail.com",
-        phoneNumber: "210-426-2358",
-        IsPreview: false
+        phoneNumber: "210-426-2358"
     })
 
-    const onSubmit = () => {
-       setGeneralInfo(prevState => ({
-            ...prevState,
-            IsPreview: !generalInfo.IsPreview
-        }))
+    const [preview, setPreview] = useState(false)
+    
+    const onSubmit = (e) => {
+        e.preventDefault()
+        setPreview(!preview)
     }
 
     const handleChange = (event) => {
@@ -31,7 +30,7 @@ export default function Generalform() {
     }
 
 
-    if(generalInfo.IsPreview === true) {
+    if(preview === true) {
         return (
             <div className="general-container">
                 <div className="form-preview">
