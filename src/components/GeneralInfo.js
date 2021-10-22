@@ -29,7 +29,7 @@ export default function Generalform() {
         }))
     }
 
-
+    
     if(preview === true) {
         return (
             <div className="general-container">

@@ -1,39 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 import EducationalInput from './EducationalInput';
 import uniqid from 'uniqid'
 import '../styles/EduExp.css'
 
-class EducationalInfo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            EducationArray: []
-        }
+export default function EducationalInfo() {
+    const [educationalInfo, setEducationalInfo] = useState([])
 
-      
+   const handleAddEducation = (e) => {
+        e.preventDefault()
+        setEducationalInfo((prevState) => [...prevState, uniqid()])
     }
 
-    handleAddEducation = (event) => {
-        event.preventDefault()
-        this.setState({
-            EducationArray: this.state.EducationArray.concat(
-            <EducationalInput 
-            key={uniqid()} 
-            handleDelete={this.handleDelete.bind(this)}
-            ></EducationalInput>)
+    console.log(educationalInfo)
+
+   const handleDelete = (id) => {
+        setEducationalInfo((prevState) => {
+            let eduArray = prevState.filter((key) => key !== id);
+            return eduArray
         })
     }
 
-    handleDelete = (event) => {
-        const key = event.target.value
-        this.setState({
-            EducationArray: this.state.EducationArray.filter((obj) => obj.key !== key) 
-        })
-    }
+    const educationalComponents = educationalInfo.map((id) => (
+        <EducationalInput key={id} id={id} handleDelete={handleDelete}/>
+    ))
 
     
 
-    render() {
+    
         return (
                 <div className="edu-exp-container">
                     <div className="title">
@@ -41,15 +34,10 @@ class EducationalInfo extends React.Component {
                         <button
                         className="add-edu-exp material-icons"
                         type="button"
-                        onClick={this.handleAddEducation}
+                        onClick={handleAddEducation}
                         >add_circle</button>     
                     </div>
-                    {this.state.EducationArray}
+                    {educationalComponents}
                 </div>
         )
-    }
 }
-
-
-
-export default EducationalInfo

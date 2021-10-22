@@ -1,12 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 // import uniqid from 'uniqid'
 import '../styles/EduExp.css'
 
-class EducationalInput extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
+export default function EducationalInput(props) {
+    const [educationalInput, setEducationalInput] = useState({
             DegreesEarned: '',
             SchoolName: '',
             City: '',
@@ -14,179 +11,169 @@ class EducationalInput extends React.Component {
             GPA: '',
             StartDate: '',
             EndDate: '',
-            IsPresent: false,
-            IsPreview: false
-        }
-    }
+            IsPresent: false
+    })
 
-    handleGeneralChange = (event) => {
+    const [preview, setPreview] = useState(false)
+
+
+    const handleChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name
-        this.setState({
+        setEducationalInput(prevState => ({
+            ...prevState,
             [name]: value
-        })
+        }))    
     }
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
-        if(this.state.IsPreview === true) {
-            this.setState({
-                IsPreview: false
-            })
-        } else {
-            this.setState({
-                IsPreview: true
-        })
-    }
+        setPreview(!preview)
 }
 
-handlePresent = (e) => {
-    if(this.state.IsPresent === true) {
-        this.setState({
-            IsPresent: false
-        })
-    } else {
-        this.setState({
-            IsPresent: true
-    })
-}
+
+const handlePresent = (e) => {
+    setEducationalInput(prevState => ({
+        ...prevState,
+        IsPresent: !educationalInput.IsPresent
+    }))    
 }
 
-   
-
-
-    render() {
+    if(preview === true) {
         return (
-                <div className="edu-exp-input-container">
-                    {this.state.IsPreview ? (
+            <div className="edu-exp-input-container">
                         <div className="edu-exp-preview">
-                            <p className="degree">{this.state.DegreesEarned}</p>
+                            <p className="degree">{educationalInput.DegreesEarned}</p>
                             <div className="edu-exp-info">
-                                <p>{this.state.SchoolName}, {this.state.City}, {this.state.State}</p>
-                                <p>GPA: {this.state.GPA}</p>
-                                <p>{this.state.StartDate} - {this.state.IsPresent ? "Present" : this.state.EndDate}</p>
+                                <p>{educationalInput.SchoolName}, {educationalInput.City}, {educationalInput.State}</p>
+                                <p>GPA: {educationalInput.GPA}</p>
+                                <p>{educationalInput.StartDate} - {educationalInput.IsPresent ? "Present" : educationalInput.EndDate}</p>
                             </div>
                             <button
                                 className="edu-exp-edit" 
                                 type="button" 
-                                onClick={this.onSubmit}
+                                onClick={onSubmit}
                             >Edit</button>
                             <button
                                 className="edu-exp-edit" 
                                 type="button"
-                                value={this._reactInternals.key}
-                                onClick={this.props.handleDelete} 
+                                value={props.id}
+                                onClick={() => props.handleDelete(props.id)} 
                             >Delete</button>
                         </div>
-                    ) : (
-                        <form
-                        className="edu-exp-form"
-                        onSubmit={this.onSubmit}
-                        >
-                            <div className="edu-exp-input-group">
-                                <label>
-                                    Degree
-                                </label>
-                                <input 
-                                type='text'
-                                name="DegreesEarned"
-                                placeholder="Degree"
-                                value={this.state.DegreesEarned}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                            </div>
+                    </div>
+        )
+    } else {
+        return (
+            <div className="edu-exp-input-container">
+                <form
+                    className="edu-exp-form"
+                    onSubmit={onSubmit}
+                    >
+                    <div className="edu-exp-input-group">
+                        <label>
+                            Degree
+                        </label>
+                        <input 
+                        type='text'
+                        name="DegreesEarned"
+                        placeholder="Degree"
+                        value={educationalInput.DegreesEarned}
+                        onChange={handleChange}
+                        required
+                        ></input>
+                    </div>
 
-                            <div className="edu-exp-input-group">
-                                <label>
-                                    School Name
-                                </label>
-                                <input
-                                type='text'
-                                name="SchoolName"
-                                placeholder="School Name"
-                                value={this.state.SchoolName}
-                                onChange={this.handleGeneralChange}
-                                required></input>
-                            </div>
-                          <div className="edu-exp-input-group">
-                            <label>
-                                City and State of institution
-                            </label>
-                                <div className="city-state">
-                                <input
-                                type='text'
-                                name="City"
-                                placeholder="City"
-                                value={this.state.City}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                                <input
-                                type='text'
-                                name="State"
-                                placeholder="State"
-                                value={this.state.State}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                                </div>
-                          </div>
-                            <div className="edu-exp-input-group">
-                                <label>
-                                    GPA
-                                </label>
-                                <input
-                                type='number'
-                                name="GPA"
-                                placeholder="GPA"
-                                value={this.state.GPA}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                            </div>
-                            <div className="edu-exp-input-group">
-                                <label>
-                                    Starting date
-                                </label>
-                                <input
-                                type='date'
-                                name="StartDate"
-                                value={this.state.StartDate}
-                                onChange={this.handleGeneralChange}
-                                required
-                                ></input>
-                            </div>
-                            <div className="edu-exp-input-group">
-                                <label>
-                                    End date
-                                </label>
-                                <input
-                                type='date'
-                                name="EndDate"
-                                value={this.state.EndDate}
-                                onChange={this.handleGeneralChange}
-                                disabled={this.state.IsPresent}
-                                required
-                                ></input>
-                                <div className="checkbox">
-                                    <label>To Present?</label>
-                                    <input
-                                    type="checkbox"
-                                    onClick={this.handlePresent}></input>
-                                </div>
-                            </div>
-                            <button
-                            className="edu-exp-submit"
-                            >Submit</button>
-                        </form>
-                    )} 
-                </div>
+                    <div className="edu-exp-input-group">
+                        <label>
+                            School Name
+                        </label>
+                        <input
+                        type='text'
+                        name="SchoolName"
+                        placeholder="School Name"
+                        value={educationalInput.SchoolName}
+                        onChange={handleChange}
+                        required></input>
+                    </div>
+                    <div className="edu-exp-input-group">
+                    <label>
+                        City and State of institution
+                    </label>
+                        <div className="city-state">
+                        <input
+                        type='text'
+                        name="City"
+                        placeholder="City"
+                        value={educationalInput.City}
+                        onChange={handleChange}
+                        required
+                        ></input>
+                        <input
+                        type='text'
+                        name="State"
+                        placeholder="State"
+                        value={educationalInput.State}
+                        onChange={handleChange}
+                        required
+                        ></input>
+                        </div>
+                    </div>
+                    <div className="edu-exp-input-group">
+                        <label>
+                            GPA
+                        </label>
+                        <input
+                        type='number'
+                        name="GPA"
+                        placeholder="GPA"
+                        value={educationalInput.GPA}
+                        onChange={handleChange}
+                        required
+                        ></input>
+                    </div>
+                    <div className="edu-exp-input-group">
+                        <label>
+                            Starting date
+                        </label>
+                        <input
+                        type='date'
+                        name="StartDate"
+                        value={educationalInput.StartDate}
+                        onChange={handleChange}
+                        required
+                        ></input>
+                    </div>
+                    <div className="edu-exp-input-group">
+                        <label>
+                            End date
+                        </label>
+                        <input
+                        type='date'
+                        name="EndDate"
+                        value={educationalInput.EndDate}
+                        onChange={handleChange}
+                        disabled={educationalInput.IsPresent}
+                        required
+                        ></input>
+                        <div className="checkbox">
+                            <label>To Present?</label>
+                            <input
+                            type="checkbox"
+                            onClick={handlePresent}></input>
+                        </div>
+                    </div>
+                    <button
+                    className="edu-exp-submit"
+                    >Submit</button>
+                </form>
+            </div>
         )
     }
+        
 }
 
 
 
-export default EducationalInput
+
