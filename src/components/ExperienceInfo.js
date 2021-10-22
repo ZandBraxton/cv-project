@@ -1,39 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ExperienceInput from './ExperienceInput';
 import uniqid from 'uniqid'
 import '../styles/EduExp.css'
 
 
-class ExperienceInfo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            ExperienceArray: []
-        }
+export default function ExperienceInfo() {
+    const [experienceInfo, setExperienceInfo] = useState([])
 
-      
+
+    const handleAddexperience = (e) => {
+        e.preventDefault()
+        setExperienceInfo((prevState) => [...prevState, uniqid()])
     }
 
-    handleAddexperience = (event) => {
-        event.preventDefault()
-        this.setState({
-            ExperienceArray: this.state.ExperienceArray.concat(
-                <ExperienceInput
-                key={uniqid()}
-                handleDelete={this.handleDelete.bind(this)}
-                ></ExperienceInput>)
+    const handleDelete = (id) => {
+        setExperienceInfo((prevState) => {
+            let expArray = prevState.filter((key) => key !== id)
+            return expArray
         })
     }
 
-    handleDelete = (event) => {
-        const key = event.target.value
-        this.setState({
-            ExperienceArray: this.state.ExperienceArray.filter((obj) => obj.key !== key) 
-        })
-    }
-
-    render() {
-      
+    const experienceComponents = experienceInfo.map((id) => (
+        <ExperienceInput key={id} id={id} handleDelete={handleDelete}/>
+    ))
 
         return (
                 <div className="edu-exp-container">
@@ -42,15 +31,10 @@ class ExperienceInfo extends React.Component {
                         <button
                         className="add-edu-exp material-icons"
                         type="button"
-                        onClick={this.handleAddexperience}
+                        onClick={handleAddexperience}
                         >add_circle</button> 
                     </div>
-                    {this.state.ExperienceArray}
+                    {experienceComponents}
                 </div>
         )
-    }
 }
-
-
-
-export default ExperienceInfo

@@ -6,12 +6,11 @@ import '../styles/EduExp.css'
 export default function EducationalInfo() {
     const [educationalInfo, setEducationalInfo] = useState([])
 
-   const handleAddEducation = (e) => {
+    const handleAddEducation = (e) => {
         e.preventDefault()
         setEducationalInfo((prevState) => [...prevState, uniqid()])
     }
 
-    console.log(educationalInfo)
 
    const handleDelete = (id) => {
         setEducationalInfo((prevState) => {

@@ -1,11 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../styles/EduExp.css'
 
-class ExperienceInput extends React.Component {
-    constructor(props) {
-        super(props);
+export default function ExperienceInput(props) {
 
-        this.state = {
+    const [experienceInput, setExperienceInput] = useState({
             PositionTitle: '',
             CompanyName: '',
             City: '',
@@ -14,71 +12,65 @@ class ExperienceInput extends React.Component {
             EndDate: '',
             Tasks: '',
             IsPresent: false,
-            IsPreview: false
-        }
-    }
+    })
 
-    handleGeneralChange = (event) => {
+    const [preview, setPreview] = useState(false)
+    
+
+    const handleChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name
-        this.setState({
+        setExperienceInput(prevState => ({
+            ...prevState,
             [name]: value
-        })
+        }))
     }
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
-        if(this.state.IsPreview === true) {
-            this.setState({
-                IsPreview: false
-            })
-        } else {
-            this.setState({
-                IsPreview: true
-        })
-    }
+        setPreview(!preview)
 }
-    handlePresent = (e) => {
-        if(this.state.IsPresent === true) {
-            this.setState({
-                IsPresent: false
-            })
-        } else {
-            this.setState({
-                IsPresent: true
-        })
-    }
+
+
+    const handlePresent = (e) => {
+        setExperienceInput(prevState => ({
+            ...prevState,
+            IsPresent: !experienceInput.IsPresent
+        }))    
     }
 
 
-    render() {
-        return (
+        if(preview === true) {
+            return (
                 <div className="edu-exp-input-container">
-                    {this.state.IsPreview ? (
                         <div className="edu-exp-preview">
-                            <p className="position-title">{this.state.PositionTitle}</p>
+                            <p className="position-title">{experienceInput.PositionTitle}</p>
                             <div className="edu-exp-info">
-                                <p>{this.state.CompanyName}, {this.state.City}, {this.state.State}</p>
-                                <p>{this.state.StartDate} - {this.state.IsPresent ? "Present" : this.state.EndDate}</p>
+                                <p>{experienceInput.CompanyName}, {experienceInput.City}, {experienceInput.State}</p>
+                                <p>{experienceInput.StartDate} - {experienceInput.IsPresent ? "Present" : experienceInput.EndDate}</p>
                             </div>
-                            <p className="tasks">Responsibilities: {this.state.Tasks}</p>
+                            <p className="tasks">Responsibilities: {experienceInput.Tasks}</p>
                             <button
                                 className="edu-exp-edit" 
                                 type="button" 
-                                onClick={this.onSubmit}
+                                onClick={onSubmit}
                             >Edit</button>
                             <button
                                 className="edu-exp-edit"
-                                value={this._reactInternals.key}
-                                onClick={this.props.handleDelete} 
+                                value={props.id}
+                                onClick={() => props.handleDelete(props.id)} 
                                 type="button" 
                             >Delete</button>
                         </div>
-                    ) : (
-                        <form
+                    </div>
+            )
+        } else {
+            return (
+                <div className="edu-exp-input-container">
+                    <form
                         className="edu-exp-form"
-                        onSubmit={this.onSubmit}
+                        onSubmit={onSubmit}
                         >
                             <div className="edu-exp-input-group">
                                 <label>
@@ -88,8 +80,8 @@ class ExperienceInput extends React.Component {
                                 type='text'
                                 name="PositionTitle"
                                 placeholder="Position Title"
-                                value={this.state.PositionTitle}
-                                onChange={this.handleGeneralChange}
+                                value={experienceInput.PositionTitle}
+                                onChange={handleChange}
                                 required
                                 ></input>
                             </div>
@@ -102,8 +94,8 @@ class ExperienceInput extends React.Component {
                                 type='text'
                                 name="CompanyName"
                                 placeholder="Company Name"
-                                value={this.state.CompanyName}
-                                onChange={this.handleGeneralChange}
+                                value={experienceInput.CompanyName}
+                                onChange={handleChange}
                                 required></input>
                             </div>
                           <div className="edu-exp-input-group">
@@ -115,16 +107,16 @@ class ExperienceInput extends React.Component {
                                 type='text'
                                 name="City"
                                 placeholder="City"
-                                value={this.state.City}
-                                onChange={this.handleGeneralChange}
+                                value={experienceInput.City}
+                                onChange={handleChange}
                                 required
                                 ></input>
                                 <input
                                 type='text'
                                 name="State"
                                 placeholder="State"
-                                value={this.state.State}
-                                onChange={this.handleGeneralChange}
+                                value={experienceInput.State}
+                                onChange={handleChange}
                                 required
                                 ></input>
                                 </div>
@@ -136,8 +128,8 @@ class ExperienceInput extends React.Component {
                                 <input
                                 type='date'
                                 name="StartDate"
-                                value={this.state.StartDate}
-                                onChange={this.handleGeneralChange}
+                                value={experienceInput.StartDate}
+                                onChange={handleChange}
                                 required
                                 ></input>
                             </div>
@@ -148,36 +140,33 @@ class ExperienceInput extends React.Component {
                                 <input
                                 type='date'
                                 name="EndDate"
-                                value={this.state.EndDate}
-                                onChange={this.handleGeneralChange}
-                                disabled={this.state.IsPresent}
+                                value={experienceInput.EndDate}
+                                onChange={handleChange}
+                                disabled={experienceInput.IsPresent}
                                 required
                                 ></input>
                                 <div className="checkbox">
                                 <label>To Present?</label>
                                 <input
                                 type="checkbox"
-                                onClick={this.handlePresent}></input>
+                                onClick={handlePresent}></input>
                                 </div>
                             </div>
                             <div>
                                 <label>Tasks</label>
                                 <textarea
                                 name="Tasks"
-                                value={this.state.Tasks}
-                                onChange={this.handleGeneralChange}>
+                                value={experienceInput.Tasks}
+                                onChange={handleChange}>
                                 </textarea>
                             </div>
                             <button
                             className="edu-exp-submit"
                             >Submit</button>
                         </form>
-                    )} 
                 </div>
-        )
+            )
+        }
     }
-}
 
 
-
-export default ExperienceInput

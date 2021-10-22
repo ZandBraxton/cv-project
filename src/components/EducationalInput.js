@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import uniqid from 'uniqid'
 import '../styles/EduExp.css'
 
 export default function EducationalInput(props) {
